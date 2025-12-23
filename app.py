@@ -7,6 +7,14 @@ def home():
     return jsonify(
         message="Hello, Flask!",
     )
+
+
+@app.route("/api/health")
+def health():
+    return jsonify(
+        status="ok",
+        service="flask-api"
+    )
     
 
 
