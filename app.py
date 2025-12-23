@@ -36,6 +36,21 @@ def random_number():
     )
 
 
+fun_facts = [
+    "Honey never spoils.",
+    "Octopuses have three hearts.",
+    "A group of flamingos is called a flamboyance.",
+    "Bananas are berries, but strawberries aren't."
+]
+
+@app.route("/funfact")
+def random_fun_fact():
+    fact = random.choice(fun_facts)
+    return jsonify(
+        fun_fact=fact
+    )
+
+
 @app.route("/api/health")
 def health():
     return jsonify(
