@@ -5,9 +5,9 @@
 name: Build and deploy Python app to Azure Web App - zakk-app-flask
 
 on:
-  push:
-    branches:
-      - master
+  release:
+    types: [published]
+    
   workflow_dispatch:
 
 jobs:
@@ -63,4 +63,5 @@ jobs:
         with:
           app-name: 'zakk-app-flask'
           slot-name: 'Production'
+
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_FB00586F08BB4B81970E8107A62F553B }}
