@@ -9,6 +9,13 @@ def home():
     )
 
 
+def greeting():
+    name = request.args.get("name", default="Guest")
+    return jsonify(
+        message=f"Hello, {name}!"
+    )
+
+
 @app.route("/api/health")
 def health():
     return jsonify(
