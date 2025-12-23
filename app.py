@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
@@ -9,6 +9,7 @@ def home():
     )
 
 
+@app.route("/api/greeting", methods=["GET"])
 def greeting():
     name = request.args.get("name", default="Guest")
     return jsonify(
