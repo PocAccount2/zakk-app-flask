@@ -1,4 +1,5 @@
 from flask import Flask, jsonify, request
+import random
 
 app = Flask(__name__)
 
@@ -14,6 +15,14 @@ def greeting():
     name = request.args.get("name", default="Guest")
     return jsonify(
         message=f"Hello, {name}!"
+    )
+
+
+@app.route("/api/number")
+def random_number():
+    number = random.randint(1, 100)  # returns a random integer between 1 and 100
+    return jsonify(
+        random_number=number
     )
 
 
