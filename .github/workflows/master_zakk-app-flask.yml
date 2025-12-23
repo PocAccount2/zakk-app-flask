@@ -43,7 +43,7 @@ jobs:
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'zakk-app-flask'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_FB00586F08BB4B81970E8107A62F553B }}
 
 
 
@@ -69,3 +69,4 @@ jobs:
           github_deployment: true
           deployment_environment: "production"
           github_token: ${{ secrets.GITHUB_TOKEN }}
+
