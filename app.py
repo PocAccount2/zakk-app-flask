@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, request
 import random
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -17,6 +18,15 @@ def greeting():
         message=f"Hello, {name}!"
     )
 
+
+@app.route("/api/time")
+def current_time():
+    now = datetime.utcnow()
+    return jsonify(
+        utc_time = now.strftime("%Y-%m-%dT%H:%M:%SZ"),
+        timestamp = now.timestamp()
+    )
+    
 
 @app.route("/api/number")
 def random_number():
