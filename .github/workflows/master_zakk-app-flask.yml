@@ -67,6 +67,10 @@ jobs:
           target: ${{ vars.TESTING_APP_URL }}/openapi.yaml  # live deployed URL to OpenAPI spec
           format: openapi
           token: ${{ secrets.GITHUB_TOKEN }}
+          cmd_options: >
+            -a
+            -j
+            -m 10
 
 
 
