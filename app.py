@@ -1,9 +1,17 @@
-from flask import Flask, jsonify, request, make_response
+from flask import Flask, jsonify, request, make_response,send_from_directory
 import random
 from datetime import datetime
 import sqlite3
+import os
 
 app = Flask(__name__)
+
+
+
+@app.route("/openapi.yaml")
+def serve_openapi():
+    return send_from_directory(os.getcwd(), "openapi.yaml")
+
 
 # -------------------------
 # 1. Missing Security Headers

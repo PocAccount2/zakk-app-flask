@@ -1,0 +1,113 @@
+openapi: 3.0.3
+info:
+  title: Zakk Flask Vulnerable API
+  version: 1.0.0
+
+servers:
+  - url: https://zakk-app-flask-fyeybqh6gmgdhrbr.canadacentral-01.azurewebsites.net
+
+paths:
+  /api/greeting:
+    get:
+      parameters:
+        - name: name
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Greeting message
+          content:
+            text/html:
+              schema:
+                type: string
+
+  /api/user:
+    get:
+      parameters:
+        - name: id
+          in: query
+          schema:
+            type: string   # IMPORTANT for SQLi testing
+      responses:
+        '200':
+          description: User info
+          content:
+            application/json:
+              schema:
+                type: object
+
+  /api/ping:
+    get:
+      parameters:
+        - name: host
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Ping result
+          content:
+            application/json:
+              schema:
+                type: object
+
+  /api/login:
+    get:
+      responses:
+        '200':
+          description: Login response
+          content:
+            application/json:
+              schema:
+                type: object
+
+  /api/admin:
+    get:
+      responses:
+        '200':
+          description: Admin data
+          content:
+            application/json:
+              schema:
+                type: object
+
+  /api/debug:
+    get:
+      responses:
+        '200':
+          description: Debug info
+          content:
+            application/json:
+              schema:
+                type: object
+
+  /api/time:
+    get:
+      responses:
+        '200':
+          description: Time info
+          content:
+            application/json:
+              schema:
+                type: object
+
+  /api/number:
+    get:
+      responses:
+        '200':
+          description: Random number
+          content:
+            application/json:
+              schema:
+                type: object
+
+  /api/health:
+    get:
+      responses:
+        '200':
+          description: Health check
+          content:
+            application/json:
+              schema:
+                type: object

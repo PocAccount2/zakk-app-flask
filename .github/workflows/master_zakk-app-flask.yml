@@ -46,24 +46,27 @@ jobs:
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_FB00586F08BB4B81970E8107A62F553B }}
 
 
-  zap_scan:
+
+  zap_api_scan:
     needs: deploy-azure
     runs-on: ubuntu-latest
-    name: dast scan with zap
+    name: DAST API Scan with ZAP
     permissions:
       contents: read
-      issues: write    
+      issues: write
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+      - name: Download app artifact
+        uses: actions/download-artifact@v4
         with:
-          ref: master
-      - name: ZAP Scan
+          name: python-app
+      - name: ZAP API Scan
+        uses: zaproxy/action-api-scan@v0.10.0
         continue-on-error: true
-        uses: zaproxy/action-full-scan@v0.13.0
         with:
+          target: ${{ vars.TESTING_APP_URL }}/openapi.yaml  # live deployed URL to OpenAPI spec
+          format: openapi
           token: ${{ secrets.GITHUB_TOKEN }}
-          target: ${{ vars.TESTING_APP_URL }}
 
 
 
