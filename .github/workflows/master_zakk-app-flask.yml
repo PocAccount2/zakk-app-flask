@@ -50,6 +50,9 @@ jobs:
     needs: deploy-azure
     runs-on: ubuntu-latest
     name: dast scan with zap
+    permissions:
+      contents: read
+      issues: write    
     steps:
       - name: Checkout
         uses: actions/checkout@v4
